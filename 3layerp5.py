@@ -9,10 +9,10 @@ inputlayer = Input(shape=(16,))
 
 
 encoded = Dense(5, activation='sigmoid',
-                kernel_initializer=initializers.Constant(value=0.8),
+                kernel_initializer=initializers.Constant(value=1),
                 bias_initializer='zero')(inputlayer)
 decoded = Dense(16, activation='sigmoid',
-                kernel_initializer=initializers.Constant(value=0.8),
+                kernel_initializer=initializers.Constant(value=1),
                 bias_initializer='zero')(encoded)
 
 autoencoder = Model(inputlayer, decoded)
@@ -77,8 +77,12 @@ print(encoded_data)
 decoded_data = decoder.predict(encoded_data)
 print(decoded_data)
 
-with open('3l5p_i80.csv', 'w') as f:
+with open('3l5p_i100_decoded.csv', 'w', newline='') as f:
     wr = csv.writer(f)
     wr.writerows(decoded_data)
+
+with open('3l5p_i100_encoded.csv', 'w', newline='') as f:
+    wr = csv.writer(f)
+    wr.writerows(encoded_data)
 
 print("%f s" % (time.time() - start_time))
