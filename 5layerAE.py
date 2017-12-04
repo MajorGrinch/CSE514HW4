@@ -2,6 +2,7 @@ from keras.layers import Input, Dense
 from keras import optimizers, initializers
 from keras.models import Model
 import sys
+import csv
 
 
 initWeight = float(sys.argv[1])
@@ -74,7 +75,6 @@ autoencoder.fit(x_train, x_train,
 half_encoded = encoderh.predict(x_train)
 print(half_encoded)
 
-
 encoded_data = encoder.predict(x_train)
 print(encoded_data)
 
@@ -83,5 +83,21 @@ print(half_decoded)
 
 decoded_data = autoencoder.predict(x_train)
 print(decoded_data)
+
+with open('5l_i%dhalfencoded.csv' % int(initWeight*100), 'w', newline='') as f:
+    wr = csv.writer(f)
+    wr.writerows(half_encoded)
+
+with open('5l_i%d_encoded.csv' % int(initWeight*100), 'w', newline='') as f:
+    wr = csv.writer(f)
+    wr.writerows(encoded_data)
+
+with open('5l_i%d_halfdecoded.csv' % int(initWeight*100), 'w', newline='') as f:
+    wr = csv.writer(f)
+    wr.writerows(half_decoded)
+
+with open('5l_i%d_decoded.csv' % int(initWeight*100), 'w', newline='') as f:
+    wr = csv.writer(f)
+    wr.writerows(decoded_data)
 
 print('initial value = 1')
