@@ -3,16 +3,18 @@ from keras import optimizers, initializers
 from keras.models import Model
 import time
 import csv
+import sys
 
 
+initWeight = float(sys.argv[1])
 inputlayer = Input(shape=(16,))
 
 
 encoded = Dense(5, activation='sigmoid',
-                kernel_initializer=initializers.Constant(value=1),
+                kernel_initializer=initializers.Constant(value=initWeight),
                 bias_initializer='zero')(inputlayer)
 decoded = Dense(16, activation='sigmoid',
-                kernel_initializer=initializers.Constant(value=1),
+                kernel_initializer=initializers.Constant(value=initWeight),
                 bias_initializer='zero')(encoded)
 
 autoencoder = Model(inputlayer, decoded)
@@ -77,11 +79,11 @@ print(encoded_data)
 decoded_data = decoder.predict(encoded_data)
 print(decoded_data)
 
-with open('3l5p_i100_decoded.csv', 'w', newline='') as f:
+with open('3l5p_i%d_decoded.csv' % int(initWeight*100), 'w', newline='') as f:
     wr = csv.writer(f)
     wr.writerows(decoded_data)
 
-with open('3l5p_i100_encoded.csv', 'w', newline='') as f:
+with open('3l5p_i%d.csv_encoded' % int(initWeight*100), 'w', newline='') as f:
     wr = csv.writer(f)
     wr.writerows(encoded_data)
 
