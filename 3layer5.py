@@ -77,7 +77,7 @@ print(encoded_data)
 decoded_data = decoder.predict(encoded_data)
 print(decoded_data)
 
-with open('3l5p_i8.csv', 'w') as f:
+with open('3l5p_i80.csv', 'w') as f:
     wr = csv.writer(f)
     wr.writerows(decoded_data)
 
