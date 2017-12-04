@@ -83,7 +83,7 @@ with open('3l5p_i%d_decoded.csv' % int(initWeight*100), 'w', newline='') as f:
     wr = csv.writer(f)
     wr.writerows(decoded_data)
 
-with open('3l5p_i%d.csv_encoded' % int(initWeight*100), 'w', newline='') as f:
+with open('3l5p_i%d_encoded.csv' % int(initWeight*100), 'w', newline='') as f:
     wr = csv.writer(f)
     wr.writerows(encoded_data)
 
