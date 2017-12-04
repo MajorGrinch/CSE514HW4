@@ -67,7 +67,7 @@ x_train = [
 start_time = time.time()
 
 autoencoder.fit(x_train, x_train,
-                nb_epoch=200000,
+                nb_epoch=1500000,
                 verbose=2,
                 batch_size=256,
                 shuffle=True,
