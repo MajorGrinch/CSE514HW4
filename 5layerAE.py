@@ -100,4 +100,4 @@ with open('5l_i%d_decoded.csv' % int(initWeight*100), 'w', newline='') as f:
     wr = csv.writer(f)
     wr.writerows(decoded_data)
 
-print('initial value = 1')
+print('initial weight = %f' % initWeight)
